@@ -397,19 +397,21 @@
       }
 
       .nav-links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
 
-    position: absolute;   /* ADD THIS */
-    top: 80px;            /* BELOW NAVBAR */
-    left: 0;
-    width: 100%;
-    background: var(--bg-light-navy);
-    padding: 20px 0;
-    z-index: 999;
-  }
+        position: absolute;
+        /* ADD THIS */
+        top: 80px;
+        /* BELOW NAVBAR */
+        left: 0;
+        width: 100%;
+        background: var(--bg-light-navy);
+        padding: 20px 0;
+        z-index: 999;
+      }
 
       .hero {
         flex-direction: column-reverse;
@@ -435,6 +437,37 @@
         margin-top: 10px;
       }
     }
+
+    .menu-toggle {
+  display: none;
+  font-size: 24px;
+  color: #ccd6f6;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 80px;
+    left: -100%;
+    width: 100%;
+    background: #112240;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    transition: 0.3s;
+  }
+
+  .nav-links.active {
+    left: 0;
+  }
+}
   </style>
 </head>
 
@@ -451,6 +484,10 @@
 
   <nav>
     <div class="logo">&lt;RD /&gt;</div>
+    <div class="menu-toggle" id="menu-toggle">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
@@ -687,6 +724,12 @@
       backSpeed: 30,
       loop: true
     });
+  </script>
+
+  <script>
+    document.getElementById("menu-toggle").onclick = function () {
+      document.getElementById("nav-links").classList.toggle("active");
+    };
   </script>
 </body>
 
