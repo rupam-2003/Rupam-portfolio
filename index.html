@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rupam Das | Software Engineer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-navy: #0a192f;
+      --bg-light-navy: #112240;
+      --accent-teal: #64ffda;
+      --text-slate: #8892b0;
+      --text-light: #ccd6f6;
+      --white: #e6f1ff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-navy);
+      color: var(--text-slate);
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* --- Common Layout --- */
+    section {
+      padding: 100px 10%;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+      color: var(--text-light);
+      font-size: clamp(26px, 5vw, 32px);
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: clamp(100px, 30vw, 300px);
+      height: 1px;
+      background-color: var(--text-slate);
+      margin-left: 20px;
+      opacity: 0.3;
+    }
+
+    /* --- Professional Social Sidebar --- */
+    .social-sidebar {
+      position: fixed;
+      left: 30px;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      z-index: 10;
+    }
+
+    .social-sidebar::after {
+      content: "";
+      width: 1px;
+      height: 90px;
+      background-color: var(--text-slate);
+      opacity: 0.6;
+    }
+
+    .social-sidebar a {
+      font-size: 22px;
+      color: var(--text-light);
+      transition: 0.3s;
+    }
+
+    .social-sidebar a:hover {
+      color: var(--accent-teal);
+      transform: translateY(-3px);
+    }
+
+    /* --- Navigation --- */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10%;
+      height: 80px;
+      background: rgba(10, 25, 47, 0.85);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      color: var(--accent-teal);
+      font-family: 'Fira Code', monospace;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links li {
+      margin-left: 25px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-light);
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-teal);
+    }
+
+    .nav-socials {
+      display: none;
+      /* Mobile Only */
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+    }
+
+    .hero-content {
+      flex: 2;
+    }
+
+    /* Professional Photo Placeholder */
+    .hero-img {
+      flex: 1;
+      position: relative;
+      max-width: 300px;
+    }
+
+    .img-wrapper {
+      width: 100%;
+      aspect-ratio: 1/1;
+      border: 2px solid var(--accent-teal);
+      border-radius: 4px;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    .img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 4px;
+      filter: grayscale(100%) contrast(1);
+      transition: 0.3s;
+    }
+
+    .img-wrapper:hover img {
+      filter: none;
+    }
+
+    .img-wrapper::after {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--accent-teal);
+      z-index: -1;
+      border-radius: 4px;
+      transition: 0.2s;
+    }
+
+    .img-wrapper:hover::after {
+      top: 15px;
+      left: 15px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(40px, 8vw, 70px);
+      color: var(--text-light);
+      line-height: 1.1;
+      margin: 10px 0;
+    }
+
+    .hero-content h2 {
+      font-size: clamp(24px, 4vw, 40px);
+      color: var(--text-slate);
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      border: 1px solid var(--accent-teal);
+      color: var(--accent-teal);
+      padding: 12px 24px;
+      text-decoration: none;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      border-radius: 4px;
+      transition: 0.3s;
+      background: transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background: rgba(100, 255, 218, 0.1);
+      transform: translateY(-3px);
+    }
+
+    /* --- Experience Section --- */
+    .exp-item {
+      margin-bottom: 40px;
+      border-left: 2px solid var(--bg-light-navy);
+      padding-left: 20px;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .exp-role {
+      color: var(--text-light);
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .exp-company {
+      color: var(--accent-teal);
+      font-family: 'Fira Code', monospace;
+    }
+
+    .exp-date {
+      font-size: 0.85rem;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .exp-item ul {
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .exp-item ul li::before {
+      content: "▹";
+      color: var(--accent-teal);
+      margin-right: 10px;
+    }
+
+    /* --- Project Grid --- */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background: var(--bg-light-navy);
+      padding: 25px;
+      border-radius: 6px;
+      transition: 0.3s;
+      border: 1px solid transparent;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--accent-teal);
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .project-top i.folder {
+      font-size: 30px;
+      color: var(--accent-teal);
+    }
+
+    .project-links a {
+      color: var(--text-light);
+      font-size: 20px;
+      transition: 0.3s;
+      margin-left: 15px;
+    }
+
+    .project-links a:hover {
+      color: var(--accent-teal);
+    }
+
+    /* --- Skills Matrix --- */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: var(--bg-light-navy);
+      padding: 20px;
+      border-radius: 4px;
+    }
+
+    .skill-card h4 {
+      color: var(--text-light);
+      margin-bottom: 15px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      list-style: none;
+    }
+
+    .skill-list li {
+      background: rgba(100, 255, 218, 0.1);
+      color: var(--accent-teal);
+      padding: 5px 12px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem;
+    }
+
+    .footer-socials {
+      display: none;
+      /* Desktop Only */
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+
+    .footer-socials a {
+      color: var(--text-light);
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .footer-socials a:hover {
+      color: var(--accent-teal);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .social-sidebar {
+        display: none;
+      }
+
+      .footer-socials {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 80px 5%;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        justify-content: center;
+        gap: 30px;
+      }
+
+      .hero-img {
+        margin-bottom: 20px;
+        max-width: 200px;
+      }
+
+      .hero-content h1 {
+        font-size: 38px;
+      }
+
+      .hero-content p {
+        margin: 0 auto;
+      }
+
+      .btn {
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- LEFT SIDEBAR SOCIALS (Desktop Only) -->
+  <div class="social-sidebar">
+    <!-- PASTE YOUR ACTUAL LINKS IN THE HREF BELOW -->
+    <a href="https://github.com/rupam-2003" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/rupam-das-4238a92a6/" target="_blank" title="LinkedIn"><i
+        class="fa-brands fa-linkedin-in"></i></a>
+    <a href="mailto:rupamdas3941@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+  </div>
+
+  <nav>
+    <div class="logo">&lt;RD /&gt;</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="Rupam-Das-Resume.pdf" download class="btn" style="padding: 8px 15px;">Resume</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <p style="color: var(--accent-teal); font-family: 'Fira Code', monospace;">Hi, I am</p>
+        <h1>Rupam Das.</h1>
+        <h2 id="element"></h2>
+        <p style="max-width: 600px;">I am a Software Engineer specializing in Data Analytics and RAG pipelines.
+          Currently, I'm building intelligent document processing systems and scalable backend architectures.</p>
+        <div style="display: flex; gap: 15px; margin-top: 20px; justify-content: center;">
+          <a href="mailto:rupam.das@email.com" class="btn">Get In Touch</a>
+          <a href="#projects" class="btn" style="background: rgba(100, 255, 218, 0.05);">View Work</a>
+        </div>
+      </div>
+
+      <!-- PHOTO SECTION -->
+      <div class="hero-img">
+        <div class="img-wrapper">
+          <!-- Replace 'rupam-photo.jpg' with your actual image path (even AI-generated) -->
+          <img src="p.jpg" alt="Rupam Das Professional AI Photo">
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <h2 class="section-title">Where I’ve Worked</h2>
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">Data & Business Analyst Intern</span>
+          <span class="exp-company">@ Labmentix</span>
+          <span class="exp-date">Nov 2025 - Present</span>
+        </div>
+        <ul>
+          <li>Optimizing data-driven decision-making processes through advanced analytics.</li>
+          <li>Building automated Power BI dashboards for real-time performance tracking.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">Web Development Intern</span>
+          <span class="exp-company">@ Ardent Computech</span>
+          <span class="exp-date">June 2025 - Oct 2025</span>
+        </div>
+        <ul>
+          <li>Collaborated on front-end features using React.js and integrated REST APIs.</li>
+          <li>Reduced page load time by 20% through efficient asset management.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SKILLS MATRIX (Retained from original) -->
+    <section id="skills">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-container">
+        <div class="skill-card">
+          <h4>Languages</h4>
+          <ul class="skill-list">
+            <li>Python</li>
+            <li>Java</li>
+            <li>SQL</li>
+            <li>JavaScript</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h4>Frontend</h4>
+          <ul class="skill-list">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>React.js</li>
+            <li>Tailwind</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h4>Frameworks/Tools</h4>
+          <ul class="skill-list">
+            <li>Django</li>
+            <li>Power BI</li>
+            <li>LangChain</li>
+            <li>TensorFlow</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h4>Developer Tools</h4>
+          <ul class="skill-list">
+            <li>Git</li>
+            <li>Docker</li>
+            <li>AWS</li>
+            <li>Postman</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS (Top 4 based on resume correction) -->
+    <section id="projects">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="project-grid">
+
+        <!-- PROJECT 1: Rupam’s GPT -->
+        <div class="project-card">
+          <div class="project-top">
+            <i class="fa-solid fa-file-pdf folder"></i>
+            <div class="project-links">
+              <!-- PASTE YOUR GITHUB LINK HERE -->
+              <a href="https://github.com/rupam-2003/Machine_Learning/blob/main/pdfFilleOpener.py" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <h3>Rupam’s GPT: Multi-PDF Chat</h3>
+          <p>Built an end-to-end RAG pipeline using LangChain and Gemini Pro. Implemented FAISS for vector storage and
+            PyPDF2 for automated text extraction and chunking.</p>
+          <p style="font-family: 'Fira Code'; font-size: 0.75rem; color: var(--accent-teal); margin-top: auto;">GenAI •
+            RAG • FAISS</p>
+        </div>
+
+        <!-- PROJECT 2: Gemini API Q&A System -->
+        <div class="project-card">
+          <div class="project-top">
+            <i class="fa-solid fa-bolt folder"></i>
+            <div class="project-links">
+              <!-- PASTE YOUR GITHUB LINK HERE -->
+              <a href="https://github.com/rupam-2003/Machine_Learning/blob/main/gemini_app_qa.py" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <h3>Gemini Pro Q&A System</h3>
+          <p>Developed a real-time question-answering application utilizing the Google Gemini Pro model. Optimized
+            prompt logic and delivered a high-accuracy interface via Streamlit.</p>
+          <p style="font-family: 'Fira Code'; font-size: 0.75rem; color: var(--accent-teal); margin-top: auto;">
+            Streamlit • Gemini API • Python</p>
+        </div>
+
+        <!-- PROJECT 3: AI Health Bot -->
+        <div class="project-card">
+          <div class="project-top">
+            <i class="fa-solid fa-robot folder"></i>
+            <div class="project-links">
+              <!-- PASTE YOUR GITHUB LINK HERE -->
+              <a href="https://github.com/rupam-2003/Machine_Learning/blob/main/hf_llm.py" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <h3>AI Health Bot</h3>
+          <p>Specialized medical query bot leveraging Hugging Face Hub and open-source LLMs. Designed custom prompt
+            templates for context-aware health inquiries.</p>
+          <p style="font-family: 'Fira Code'; font-size: 0.75rem; color: var(--accent-teal); margin-top: auto;">Hugging
+            Face • LLMs • NLP</p>
+        </div>
+
+        <!-- PROJECT 4: Breast Cancer Classification -->
+        <div class="project-card">
+          <div class="project-top">
+            <i class="fa-solid fa-microscope folder"></i>
+            <div class="project-links">
+              <!-- PASTE YOUR GITHUB LINK HERE -->
+              <a href="https://github.com/rupam-2003/Machine_Learning/blob/main/Breast_cancer_classification.ipynb" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <h3>Breast Cancer Classification</h3>
+          <p>Engineered a predictive model for medical diagnostics using deep learning and clinical parameters. Focused
+            on high-precision classification for diagnostic support.</p>
+          <p style="font-family: 'Fira Code'; font-size: 0.75rem; color: var(--accent-teal); margin-top: auto;">Deep
+            Learning • ML • Scikit-learn</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EDUCATION (Retained from original correction) -->
+    <section id="about">
+      <h2 class="section-title">Education</h2>
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">B.Tech in Information Technology</span>
+          <span class="exp-company">@ Kalyani Govt. Engg. College</span>
+          <span class="exp-date">Expected 2026</span>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">Diploma in CST</span>
+          <span class="exp-company">@ Dr. Meghnad Saha Institute</span>
+          <span class="exp-date">2020 - 2023</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <!-- Footer Socials (Mobile Only) -->
+    <div class="footer-socials">
+      <a href="https://github.com/rupam-2003" target="_blank"><i class="fa-brands fa-github"></i></a>
+      <!-- Added https:// to the link below -->
+      <a href="https://www.linkedin.com/in/rupam-das-4238a92a6" target="_blank"><i
+          class="fa-brands fa-linkedin-in"></i></a>
+      <a href="mailto:rupamdas3941@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+    Designed & Built by Rupam Das © 2026
+  </footer>
+  <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+  <script>
+    var typed = new Typed('#element', {
+      strings: [
+        'I architect RAG pipelines.',
+        'I build AI-powered applications.',
+        'I develop data-driven solutions.',
+        'I engineer LLM integrations.'
+      ],
+      typeSpeed: 50,
+      backSpeed: 30,
+      loop: true
+    });
+  </script>
+</body>
+
+</html>
