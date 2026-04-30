@@ -397,8 +397,19 @@
       }
 
       .nav-links {
-        display: none;
-      }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+    position: absolute;   /* ADD THIS */
+    top: 80px;            /* BELOW NAVBAR */
+    left: 0;
+    width: 100%;
+    background: var(--bg-light-navy);
+    padding: 20px 0;
+    z-index: 999;
+  }
 
       .hero {
         flex-direction: column-reverse;
@@ -459,7 +470,7 @@
         <p style="max-width: 600px;">I am a Software Engineer specializing in Data Analytics and RAG pipelines.
           Currently, I'm building intelligent document processing systems and scalable backend architectures.</p>
         <div style="display: flex; gap: 15px; margin-top: 20px; justify-content: center;">
-          <a href="mailto:rupam.das@email.com" class="btn">Get In Touch</a>
+          <a href="mailto:rupamdas3941@gmail.com" class="btn">Get In Touch</a>
           <a href="#projects" class="btn" style="background: rgba(100, 255, 218, 0.05);">View Work</a>
         </div>
       </div>
@@ -505,7 +516,7 @@
     <section id="skills">
       <h2 class="section-title">Technical Skills</h2>
       <div class="skills-container">
-    
+
         <div class="skill-card">
           <h4>Languages</h4>
           <ul class="skill-list">
@@ -516,7 +527,7 @@
             <li>JavaScript (ES6+)</li> <!--[cite: 1] -->
           </ul>
         </div>
-    
+
         <div class="skill-card">
           <h4>AI & Machine Learning</h4> <!--[cite: 1] -->
           <ul class="skill-list">
@@ -528,7 +539,7 @@
             <li>FAISS & Scikit-learn</li> <!--[cite: 1] -->
           </ul>
         </div>
-    
+
         <div class="skill-card">
           <h4>Web & Mobile Development</h4> <!--[cite: 1] -->
           <ul class="skill-list">
@@ -540,7 +551,7 @@
             <li>JWT Authentication</li> <!--[cite: 1] -->
           </ul>
         </div>
-    
+
         <div class="skill-card">
           <h4>Tools & DevOps</h4> <!--[cite: 1] -->
           <ul class="skill-list">
@@ -552,7 +563,7 @@
             <li>Render</li> <!--[cite: 1] -->
           </ul>
         </div>
-    
+
       </div>
     </section>
 
@@ -567,7 +578,8 @@
             <i class="fa-solid fa-file-pdf folder"></i>
             <div class="project-links">
               <!-- PASTE YOUR GITHUB LINK HERE -->
-              <a href="https://github.com/rupam-2003/Machine_Learning/blob/main/pdfFilleOpener.py" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+              <a href="https://github.com/rupam-2003/Machine_Learning/blob/main/pdfFilleOpener.py" target="_blank"
+                title="GitHub"><i class="fa-brands fa-github"></i></a>
             </div>
           </div>
           <h3>Rupam’s GPT: Multi-PDF Chat</h3>
@@ -583,7 +595,8 @@
             <i class="fa-solid fa-bolt folder"></i>
             <div class="project-links">
               <!-- PASTE YOUR GITHUB LINK HERE -->
-              <a href="https://github.com/rupam-2003/Machine_Learning/blob/main/gemini_app_qa.py" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+              <a href="https://github.com/rupam-2003/Machine_Learning/blob/main/gemini_app_qa.py" target="_blank"
+                title="GitHub"><i class="fa-brands fa-github"></i></a>
             </div>
           </div>
           <h3>Gemini Pro Q&A System</h3>
@@ -599,7 +612,8 @@
             <i class="fa-solid fa-robot folder"></i>
             <div class="project-links">
               <!-- PASTE YOUR GITHUB LINK HERE -->
-              <a href="https://github.com/rupam-2003/Machine_Learning/blob/main/hf_llm.py" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+              <a href="https://github.com/rupam-2003/Machine_Learning/blob/main/hf_llm.py" target="_blank"
+                title="GitHub"><i class="fa-brands fa-github"></i></a>
             </div>
           </div>
           <h3>AI Health Bot</h3>
@@ -615,7 +629,8 @@
             <i class="fa-solid fa-microscope folder"></i>
             <div class="project-links">
               <!-- PASTE YOUR GITHUB LINK HERE -->
-              <a href="https://github.com/rupam-2003/Machine_Learning/blob/main/Breast_cancer_classification.ipynb" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+              <a href="https://github.com/rupam-2003/Machine_Learning/blob/main/Breast_cancer_classification.ipynb"
+                target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
             </div>
           </div>
           <h3>Breast Cancer Classification</h3>
